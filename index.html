@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Páginas Web Simples para Negocios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(25, 118, 210, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        header {
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px 70px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #1976d2, #42a5f5, #e3f2fd);
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-left: 6px solid #1976d2;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(66, 165, 245, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        section:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        h2 {
+            color: #1976d2;
+            font-size: 2em;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        h2 i {
+            margin-right: 15px;
+            color: #42a5f5;
+            font-size: 1.2em;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #1976d2, #42a5f5);
+            border-radius: 2px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 20px;
+            padding: 15px 20px 15px 40px;
+            position: relative;
+            font-size: 1.15em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(66, 165, 245, 0.05);
+            border-radius: 10px;
+            border: 1px solid transparent;
+        }
+        ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: #42a5f5;
+            font-size: 1.2em;
+        }
+        ul li:hover {
+            color: #1976d2;
+            background: rgba(66, 165, 245, 0.1);
+            border-color: #42a5f5;
+            transform: translateX(10px);
+        }
+        ul li.expanded {
+            background: rgba(66, 165, 245, 0.15);
+            border-color: #1976d2;
+        }
+        .extra-text {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #42a5f5;
+            color: #555;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        ul li.expanded .extra-text {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 500px; }
+        }
+        .price {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #388e3c;
+            text-align: center;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            padding: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .price:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+        .whatsapp-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #25d366 0%, #4caf50 100%);
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.2em;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .whatsapp-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .whatsapp-btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            color: white;
+            margin-top: 60px;
+            font-weight: 500;
+            position: relative;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            color: white;
+            padding: 15px 18px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5em;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+        .back-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#quien-eres">Quién Soy</a></li>
+            <li><a href="#servicio">Servicios</a></li>
+            <li><a href="#precio">Precios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Diseños Responsive y Páginas Web Simples para Negocios</h1>
+    </header>
+    <div class="container">
+        <section id="quien-eres">
+            <h2><i class="fas fa-user-tie"></i>Quién Soy</h2>
+            <p>Hola, soy Alexis Farid, un desarrollador web especializado en crear soluciones digitales simples y efectivas para pequeños negocios. Con más de 5 años de experiencia, ayudo a emprendedores a digitalizar sus operaciones de manera rápida y económica. Mi enfoque es entender tus necesidades específicas y ofrecer resultados que impulsen el crecimiento de tu negocio, desde restaurantes hasta tiendas locales. Trabajo con las últimas tecnologías para garantizar que tus proyectos sean modernos, seguros y escalables.</p>
+        </section>
+        
+        <section id="servicio">
+            <h2><i class="fas fa-tools"></i>Qué Servicio Ofrezco</h2>
+            <p>Ofrezco la creación de páginas web simples para restaurantes, tiendas y otros negocios. Estos incluyen:</p>
+            <ul>
+                <li>
+                    <strong>Páginas web básicas con información de contacto, horarios y servicios:</strong> Tu presencia digital esencial, mostrando detalles clave como ubicación y horarios. Ayudan a ganar visibilidad, generar confianza y convertir visitantes en clientes potenciales.
+                    <div class="extra-text">
+                        Estas páginas incluyen secciones personalizables como "Sobre Nosotros", "Galería de Productos" y formularios de contacto integrados. Utilizo HTML5, CSS3 y JavaScript para crear sitios rápidos y compatibles con todos los navegadores. Además, incorporo elementos SEO para mejorar tu posicionamiento en Google, aumentando el tráfico orgánico y potenciales ventas.
+                    </div>
+                </li>
+                <li>
+                    <strong>Diseño responsive para móviles y computadoras:</strong> Diseños que se adaptan perfectamente a cualquier pantalla. Mejoran la experiencia del usuario, optimizan para búsquedas móviles y aseguran accesibilidad en todos los dispositivos.
+                    <div class="extra-text">
+                        El diseño responsive utiliza media queries y flexbox para ajustar layouts dinámicamente. Esto significa que tu sitio se ve perfecto en smartphones, tablets y desktops sin necesidad de versiones separadas. Incluye optimización de imágenes, fuentes web y tiempos de carga rápidos, lo que reduce la tasa de rebote y mejora la conversión de visitantes a clientes.
+                    </div>
+                </li>
+                <li>
+                    <strong>Integración con WhatsApp para pedidos:</strong> Botones directos para comunicación instantánea. Aceleran consultas y pedidos, simplifican el proceso de venta y permiten una atención personalizada que fideliza a los clientes.
+                    <div class="extra-text">
+                        La integración incluye botones flotantes y enlaces que abren WhatsApp con mensajes predefinidos. Puedes personalizar textos para diferentes productos o servicios. Esto facilita pedidos en tiempo real, reduce llamadas telefónicas y permite seguimiento de conversaciones. Es ideal para restaurantes, tiendas en línea y servicios locales, aumentando la eficiencia operativa y la satisfacción del cliente.
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="precio">
+            <h2><i class="fas fa-tags"></i>Precios</h2>
+            <p class="price">Página Web Simple: S/ 80 - S/ 150 (Incluye hasta 5 páginas)</p>
+            <p class="price">Diseño Responsive: S/ 50 - S/ 100 (Dependiendo de la complejidad)</p>
+            <p class="price">Integración con WhatsApp: S/ 30 - S/ 60 (Según requerimientos)</p>
+            <p>Los precios incluyen diseño, desarrollo, entrega en 7-10 días hábiles y soporte inicial. Ofrecemos consultas personalizadas para adaptar el proyecto a tu presupuesto y necesidades específicas, asegurando valor y calidad. Todos los proyectos incluyen optimización SEO básica para mejorar tu visibilidad en motores de búsqueda.</p>
+        </section>
+        
+        <section id="contacto">
+            <h2><i class="fas fa-phone"></i>Contacto y Pago</h2>
+            <p>¿Interesado? Contáctame por WhatsApp para discutir tu proyecto, compartir ideas y acordar los detalles. El proceso es sencillo: desde la consulta inicial hasta la entrega final, te mantengo informado en cada paso. Estoy disponible para responder preguntas y proporcionar cotizaciones gratuitas.</p>
+            <a href="https://wa.me/51949116661?text=Hola%20%F0%9F%91%8B%2C%20estoy%20interesado%20en%20contratar%20tus%20servicios%20de%20páginas%20web%2C%20diseño%20responsive%20o%20integración%20con%20WhatsApp." class="whatsapp-btn">Contactar por WhatsApp</a>
+            <p><strong>Pago por Yape:</strong> Envía el monto acordado al número 949 116 661. Una vez confirmado el pago por WhatsApp, comenzamos el desarrollo de inmediato para una entrega rápida y eficiente. Aceptamos pagos seguros y ofrecemos garantías de satisfacción.</p>
+        </section>
+    </div>
+    
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    
+    <footer>
+        <p>&copy; 2025 Alexis Farid. Todos los derechos reservados. Diseñado con pasión para impulsar tu negocio digital.</p>
+    </footer>
+    
+    <script>
+        // Most
